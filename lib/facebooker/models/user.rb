@@ -249,13 +249,15 @@ module Facebooker
     end
 
     def friends_with_this_app
-      @friends_with_this_app ||= friend_ids_with_this_app.map do |uid|
+      #@friends_with_this_app ||= friend_ids_with_this_app.map do |uid|
+      friend_ids_with_this_app.map do |uid|
         User.new(uid, session)
       end
     end
 
     def friend_ids_with_this_app
-      @friend_ids_with_this_app ||= session.post('facebook.friends.getAppUsers')
+      #@friend_ids_with_this_app ||= session.post('facebook.friends.getAppUsers')
+      session.post('facebook.friends.getAppUsers')
     end
 
     def groups(gids = [])
